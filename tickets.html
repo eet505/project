@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Tickets</title>
+    <link rel="stylesheet" href="hf.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <style>
+
+        header {
+            position: static; 
+            background-color: #460000;
+        }
+        
+        body {
+            font-family: "Source Sans Pro", sans-serif;
+            line-height: 1.6;
+            background-color: rgba(255, 255, 255, 0.7);
+            background-image: url(seats.jpg);
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            text-shadow: 2px 2px 2px #efc631;
+            color: #460000;
+        }
+
+        #paymentSection {
+            position: relative;
+            width: 80%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            border: 6px solid #460000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            display: none;
+            margin-top: 20px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            margin-bottom: 40px;
+        }
+
+
+        #paymentSection h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #efc631;
+            text-shadow: 2px 2px 2px #460000;
+            font-weight: bold;
+        }
+
+
+        #paymentSection input,
+        #paymentSection select,
+        #paymentSection textarea,
+        #paymentSection button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        #paymentSection button {
+            background-color: #460000;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #paymentSection button:hover {
+            background-color: #efc631;
+            color:#460000;
+        }
+
+
+        #paymentSection textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+
+        @media (max-width: 768px) {
+            #paymentSection {
+                padding: 20px;
+            }
+
+            #paymentSection h3 {
+                font-size: 1.5rem;
+            }
+
+            #paymentSection input,
+            #paymentSection select,
+            #paymentSection button {
+                font-size: 1rem;
+            }
+        }
+
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            color: black;
+        }
+                
+        .custom-dropdown .dropdown-content {
+            display: none;
+        }
+
+        .custom-dropdown .dropdown-content.active {
+            display: block;
+        }
+
+
+        .custom-dropdown {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .dropdown-btn {
+            width: 100%;
+            padding: 12px 18px;
+            color: black;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .dropdown-btn:focus {
+            border-color: #460000;
+            color: black;
+            box-shadow: black;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 40px;
+            width: 100%;
+            max-height: 200px; 
+            overflow-y: auto;
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        .dropdown-item {
+            padding: 12px 18px;
+            cursor: pointer;
+            font-size: 16px;
+            white-space: nowrap; 
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .dropdown-item:hover {
+            background-color:  #efc631;
+        }
+
+        .custom-dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        @media screen and (max-width: 600px) {
+            .dropdown-content {
+                max-height: 200px;
+            }
+
+            .dropdown-item {
+                font-size: 14px;
+            }
+        }
+
+        input, textarea, button {
+            padding: 12px 18px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus, button:hover {
+            border-color: #ffbb33;
+            box-shadow: 0 0 5px rgba(0, 0, 0);
+        }
+
+        button {
+            background-color: #460000;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .message {
+            text-align: center;
+            font-size: 16px;
+            color: red;
+            display: none;
+        }
+
+        .seating-chart{
+            margin-bottom: 8px;
+            color:#460000;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .seating-chart a{
+            color: #460000;
+            text-decoration: none;
+        }
+        .seating-chart a:hover{
+            color: white;
+            text-shadow: 0 0 2px #ffbb33;
+
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            form {
+                gap: 10px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            label, input, select, textarea, button {
+                font-size: 14px;
+            }
+
+            .dropdown-content {
+                left: 0;
+                right: 0;
+                overflow-x: hidden;
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="teatrioperas.png" alt="Opera Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="home.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="home.html#aboutus">About Us</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#events" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Events
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="eventsn.html">National</a></li>
+                                <li><a class="dropdown-item" href="eventsi.html">International</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tickets.html">Tickets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contactus.html">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+                <form class="d-flex search-bar" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
+                    <span class="search-icon">
+                        <i class="fa fa-search"></i>
+                    </span>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+
+        <h1>Book Your Tickets</h1>
+
+    <form id="bookingForm">
+      
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName"  placeholder="Enter your first name" required>
+    
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+    
+     
+        <label for="exampleInputEmail1">Enter your e-mail:</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email" required>
+    
+      
+        <label for="seat">Choose an Event:</label>
+        <div class="custom-dropdown">
+            <button class="dropdown-btn" id="eventBtn" type="button" name="event" required>Select an event</button>
+            <div class="dropdown-content">
+                <div class="dropdown-item" data-value="opera">Arrëthyesi</div>
+                <div class="dropdown-item" data-value="theatre">Lucia di Lammermoor</div>
+                <div class="dropdown-item" data-value="concert">Oshëtima e Maleve</div>
+                <div class="dropdown-item" data-value="concert">Nëntori i Yjeve të Artë</div>
+                <div class="dropdown-item" data-value="concert">Goca e Kaçanikut</div>
+                <div class="dropdown-item" data-value="concert">Tosca</div>
+                <div class="dropdown-item" data-value="concert">Romantikët në Opera</div>
+                <div class="dropdown-item" data-value="concert">The Nutcracker (Italy)</div>
+                <div class="dropdown-item" data-value="concert">Messa di Gloria (Italy)</div>
+                <div class="dropdown-item" data-value="concert">National Day Of Albania 2024 (Greece)</div>
+                <div class="dropdown-item" data-value="concert">Ditët e Nëntorit (Gjakovë)</div>
+                <div class="dropdown-item" data-value="concert">Giselle (Spain)</div>
+                <div class="dropdown-item" data-value="concert">Carmina Burana (Montenegro)</div>
+                <div class="dropdown-item" data-value="concert">International Folklore Festival 2024 Bulgaria (Bulgaria)</div>
+            </div>
+        </div>
+        <label for="seat">Choose a Seat Category:</label>
+            <div class="custom-dropdown">
+                <button class="dropdown-btn" id="seatBtn" type="button" name="seat" required>Select a seat category</button>
+                <div class="dropdown-content">
+                    <div class="dropdown-item" data-value="A">Category A - Central Boxes</div>
+                    <div class="dropdown-item" data-value="B">Category B - Side Boxes</div>
+                    <div class="dropdown-item" data-value="C">Category C - Balcony</div>
+                    <div class="dropdown-item" data-value="D">Category D - Gallery</div>
+                </div>
+            </div>
+
+            <label for="date">Choose a Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Choose a Time:</label>
+            <input type="time" id="time" name="time" required>
+            
+            <button type="submit" class="submit-btn">Submit</button>
+            </form>
+            <div id="eventMessage" style="display: none; font-size: 18px; color: green; text-align: center;">
+                Event available! Scroll down to continue.
+            </div>
+            
+            </div>
+
+            <div id="paymentSection" style="display: none;">
+                <h3>Payment Details</h3>
+                <div class="seating-chart">
+                    <a href="seatings.jpg" target="_blank"><i>*Before you continue click to view prices!*</i></a>
+                </div>
+                <br>
+                <form id="paymentForm">
+                 
+                    <div>
+                        <label for="paymentMethod">Payment Method</label>
+                        <select id="paymentMethod" name="paymentMethod" aria-placeholder="Select payment method" required>
+                            <option value="Select Payment Method">Select Payment Method</option>
+                            <option value="Credit Card">Credit Card</option>
+                            <option value="PayPal">PayPal</option>
+                            <option value="PayPal">Cryptocurrency</option>
+                        </select>
+                    </div>
+            
+             
+                    <div>
+                        <label for="paymentExpirationDate">Expiration Date</label>
+                        <input type="month" id="paymentExpirationDate" name="paymentExpirationDate" aria-placeholder="Select expiration date" required />
+                    </div>
+
+                    <div>
+                        <label for="ticketQuantity">Quantity of Tickets</label>
+                        <input type="number" id="ticketQuantity" name="ticketQuantity" min="1" aria-placeholder="Enter quantity of tickets" required />
+                    </div>
+            
+                    <div>
+                        <label for="additionalComments">Additional Comments</label>
+                        <textarea id="additionalComments" name="additionalComments" rows="4" aria-placeholder="Write additional comments"></textarea>
+                    </div>
+            
+                    <div>
+                        <button type="submit" id="finalSubmitButton">Submit Payment</button>
+                    </div>
+                </form>
+            </div>
+            
+            
+    
+<footer>
+        <div class="footer1">
+            <img src="tkob.png" alt="TKOB Logo">
+            <p id="label">
+                You can also find us on:
+            </p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fteatri_i_operes_dhe_baletit%2F%3Fhl%3Den&is_from_rle" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-instagram">
+                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"></path>
+                    </svg>
+                    @teatri_i_operas_dhe_baletit
+                </a>
+                <a href="https://www.facebook.com/tkob.gov.al/?ref=embed_page" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-facebook">
+                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"></path>
+                    </svg>
+                    Teatri Kombetar i Operas, Baletit dhe Ansamblit Popullor
+                </a>
+            </div>
+            <p id="para1">&copy; 2024 Opera and Ballet Albanian Theatre. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const eventSchedule = {
+        "Arrëthyesi": [
+            { date: "2024-12-23", time: "19:00" },
+            { date: "2024-12-24", time: "19:00" },
+            { date: "2024-12-26", time: "19:00" },
+            { date: "2024-12-27", time: "19:00" },
+            { date: "2024-12-29", time: "19:00" },
+            { date: "2024-12-30", time: "19:00" }
+        ],
+        "Lucia di Lamermoor": [
+            { date: "2024-12-12", time: "19:00" },
+            { date: "2024-12-13", time: "19:00" },
+            { date: "2024-12-15", time: "19:00" },
+            { date: "2024-12-16", time: "19:00" }
+        ],
+        "Oshëtima e Maleve": [{ date: "2024-11-28", time: "19:00" }],
+        "Nëntori i Yjeve të Artë": [{ date: "2024-11-27", time: "19:00" }],
+        "Goca e Kaçanikut": [{ date: "2024-11-25", time: "19:00" }],
+        "Tosca": [{ date: "2024-11-09", time: "12:00" }],
+        "Romantikët në Opera": [{ date: "2024-09-27", time: "20:00" }],
+        "Liqeni i Mjellmave": [{ date: "2024-10-15", time: "20:00" }],
+        "The Nutcracker (Italy)": [
+            { date: "2024-12-11", time: "12:00" },
+            { date: "2024-12-12", time: "12:00" },
+            { date: "2024-12-13", time: "12:00" },
+            { date: "2024-12-14", time: "12:00" }
+        ],
+        "Messa di Gloria (Italy)": [{ date: "2024-11-29", time: "17:30" }],
+        "National Day Of Albania 2024 (Greece)": [{ date: "2024-11-25", time: "19:00" }],
+        "Ditët e Nëntorit (Gjakovë)": [{ date: "2024-11-23", time: "19:00" }],
+        "Giselle (Spain)": [
+            { date: "2024-11-07", time: "17:00" },
+            { date: "2024-11-08", time: "17:00" },
+            { date: "2024-11-10", time: "17:00" }
+        ],
+        "Carmina Burana (Montenegro)": [{ date: "2024-07-13", time: "17:00" }],
+        "International Folklore Festival 2024 Bulgaria (Bulgaria)": [
+            { date: "2024-07-29", time: "12:00" },
+            { date: "2024-08-01", time: "12:00" }
+        ]
+    };
+
+    function convertTo24HourFormat(time12hr) {
+        const [time, period] = time12hr.split(' ');
+        let [hours, minutes] = time.split(':').map(Number);
+        if (period === 'PM' && hours < 12) hours += 12;
+        if (period === 'AM' && hours === 12) hours = 0;
+        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+    }
+
+    const form = document.getElementById('bookingForm');
+    const paymentSection = document.getElementById('paymentSection');
+    const finalSubmitButton = document.getElementById('finalSubmitButton');
+    const eventMessage = document.getElementById('eventMessage');
+
+    
+    document.querySelectorAll('.custom-dropdown').forEach(dropdown => {
+        const dropdownBtn = dropdown.querySelector('.dropdown-btn');
+        const dropdownItems = dropdown.querySelectorAll('.dropdown-item');
+
+
+        dropdownBtn.addEventListener('click', () => {
+            dropdown.classList.toggle('active');
+        });
+
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', () => {
+                dropdownBtn.textContent = item.textContent;
+                dropdown.classList.remove('active');
+            });
+        });
+    });
+
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();  
+
+       
+        const email = document.getElementById('exampleInputEmail1').value;
+        const event = document.querySelector('#eventBtn').textContent;
+        const seatCategory = document.querySelector('#seatBtn').textContent;
+        const date = document.querySelector('#date').value;
+        const time = document.getElementById('time').value;
+
+      
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+
+     
+        if (!email || event === "Select an event" || seatCategory === "Select a seat category" || date === "" || time === "") {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+       
+        let time24 = time;
+        if (time.includes('AM') || time.includes('PM')) {
+            time24 = convertTo24HourFormat(time);
+        }
+
+        if (event in eventSchedule) {
+            const validSchedule = eventSchedule[event].some(schedule => schedule.date === date && schedule.time === time24);
+            if (!validSchedule) {
+                alert("Invalid date or time for the selected event. Please check the event schedule.");
+                return;
+            }
+        } else {
+            alert("Invalid event selection.");
+            return;
+        }
+
+      
+        eventMessage.style.display = 'block';
+        paymentSection.style.display = 'block';
+    });
+
+    finalSubmitButton.addEventListener('click', (e) => {
+        e.preventDefault(); 
+
+        const paymentExpirationDate = document.getElementById('paymentExpirationDate').value;
+        const paymentMethod = document.getElementById('paymentMethod').value;
+        const quantity = document.getElementById('ticketQuantity').value;
+
+        if (!paymentExpirationDate || paymentMethod === 'Select Payment Method' || !quantity) {
+            alert('Please complete all payment details.');
+            return;
+        }
+
+        alert('Payment successful! Your booking is complete.');
+      
+        window.location.reload();
+    });
+});
+    </script>
+</body>
+</html>
+

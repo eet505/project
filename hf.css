@@ -1,0 +1,237 @@
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1030;
+    background-color: rgba(70,0,0, 0.9);
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-weight: bold;
+}
+
+.navbar {
+    background: transparent;
+}
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1; 
+}
+
+
+.navbar-brand img {
+    height: 80px;
+    width: auto;
+}
+
+.nav-link {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #efc631 !important;
+    font-weight: bold;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ffffff !important;
+    transform: scale(1.1);
+}
+
+.navbar-nav .nav-item {
+    margin-right: 15px;
+}
+
+.navbar-nav .dropdown-menu {
+    background-color:#460000; 
+    border-color: #ffbb33; 
+    border-width: 0.2px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); 
+}
+
+.navbar-nav .dropdown-item {
+    color: #efc631; 
+    font-weight: bold;
+    text-shadow: 5px,5px,5px,#000;
+    padding: 10px 15px; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-nav .dropdown-item:hover {
+    background-color: #460000; 
+    color: white; 
+}
+
+.navbar-nav .dropdown-item:focus {
+    background-color: #efc631; 
+    color: #000; 
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    overflow: hidden;
+    width: 200px;
+    transition: width 0.3s ease;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 8px 15px;
+    border: none;
+    background-color: transparent;
+    color: #333;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: padding 0.3s ease;
+    outline: none;
+}
+
+.search-bar input:focus {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    padding: 8px 25px;
+}
+
+.search-bar input:focus-visible {
+    outline: none;
+}
+
+.search-bar input:focus::-ms-input-placeholder {
+    outline: none;
+}
+
+
+.search-bar input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.search-bar input::-webkit-search-cancel-button {
+    display: none;
+}
+
+.search-bar .search-icon {
+    position: absolute;
+    right: 15px;
+    font-size: 16px;
+    color: #ffbb33;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.search-bar .search-icon:hover {
+    color: #ffbb33;
+    transform: scale(1.2);
+}
+
+.search-bar:hover {
+    width: 220px;
+}
+
+.search-bar:hover input {
+    padding: 8px 20px;
+}
+
+.search-bar input:not(:placeholder-shown) + .search-icon {
+    color: #ffbb33;
+}
+
+footer {
+    background: #460000;
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer1 img {
+    height:120px;
+    width:auto;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.footer1 img:hover {
+    transform: scale(1.1); /* Zoom effect */
+}
+
+#label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column; /* Stack links vertically */
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.social-links a {
+    color: #ffbb33e0;
+    text-decoration: none;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: rgba(255, 255, 255, 0.85);
+    transform: scale(1.05); /* Slight hover effect */
+}
+
+.social-links svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+footer{
+    position: relative;
+}
+#para1 {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 20px;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+footer a:hover {
+    color:white;
+    text-decoration: none;
+}
+
+
+@media (max-width: 768px) {
+    footer {
+        padding: 20px 10px;
+    }
+
+    .footer1 img {
+        max-width: 100px;
+    }
+
+    #label {
+        font-size: 1rem;
+    }
+
+    .social-links a {
+        font-size: 0.9rem;
+    }
+
+    #para1 {
+        font-size: 0.8rem;
+    }
+}

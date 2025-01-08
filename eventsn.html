@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="hf.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Birthstone+Bounce:wght@400;500&family=Love+Light&display=swap" rel="stylesheet">
+    <title>National Events - Opera and Ballet Albanian Theatre</title>
+    <style>
+         header {
+            position: static; 
+            background-color: #460000;
+        }
+        body {
+            font-family: "Source Sans Pro", sans-serif;
+            line-height: 1.6;
+            background-color: rgb(255, 255, 255);
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #f8f9fa;
+        }
+
+        .events-section h1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 250px; 
+            font-size: 5rem;
+            text-align: center;
+            font-family: 'Birthstone Bounce', serif;
+            background-image: url(hb.jpg);
+            background-size: cover; 
+            background-position: center center; 
+            background-repeat: no-repeat;
+            color: white;
+            text-shadow: 3px 3px 3px #000;
+            padding: 0; 
+            width: 100%; 
+            margin-bottom: 8px;
+        }
+
+
+
+        .events-section {
+            text-align: center;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); 
+            gap: 40px; 
+            padding: 20px;
+            justify-items: center; 
+        }
+
+        .event-card {
+            display: flex; 
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: none;
+            width: 100%; 
+            max-width: 950px; 
+            margin: 10px auto; 
+            transition: box-shadow 0.3s ease, transform 0.3s ease; 
+            height: auto; 
+        }
+
+        .event-card:hover {
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); 
+            transform: translateY(-5px); 
+        }
+
+
+
+        .event-card img {
+            width: 300px; 
+            height: 300px; 
+            object-fit: cover; 
+            margin-right: 30px;
+            border-radius: 8px; 
+        }
+
+        .event-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+            text-align: left;
+            width: 100%; 
+            max-width: 550px; 
+            height: auto;
+        }
+
+        .event-card h3 {
+            color: #efc631;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .event-card p.event-type {
+            color: #bbb;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .event-card p {
+            color: #000;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .event-card p strong {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .event-card button {
+            background-color: #efc631;
+            color: #690202;
+            font-weight: 500;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+            width: 100px; 
+            max-width: 200px; 
+        }
+
+        .event-card button:hover {
+            color:#efc631;
+            background-color: #690202;
+        }
+
+        @media (max-width: 768px) {
+            .events-grid {
+                grid-template-columns: 1fr; 
+                gap: 20px;
+            }
+
+            .event-card {
+                flex-direction: column; 
+                max-width: 90%; 
+                margin: 15px auto; 
+                padding: 15px; 
+            }
+
+            .event-card img {
+                width: 100%; 
+                height: auto; 
+                margin-right: 0; 
+                margin-bottom: 15px; 
+            }
+
+            .event-info {
+                text-align: left;
+            }
+
+          
+            .event-card h3 {
+                font-size: 1.5rem;
+            }
+
+          
+            .event-card p {
+                font-size: 0.9rem;
+            }
+
+            .event-card button {
+                max-width: 100%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="teatrioperas.png" alt="Opera Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="home.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="home.html#aboutus">About Us</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href=".events-section" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">Events</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="eventsn.html">National</a></li>
+                                <li><a class="dropdown-item" href="eventsi.html">International</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="tickets.html">Tickets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contactus.html">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+                <form class="d-flex search-bar" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
+                    <span class="search-icon">
+                        <i class="fa fa-search"></i>
+                    </span>
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <section class="events-section">
+        <h1 class=".love-light-regular">National Events</h1>
+        <div class="events-grid">
+            <!-- Event Card 1: Arrethyesi -->
+            <div class="event-card">
+                <img src="arrethyesin.jpg" alt="Arrethyesi" height="200" width="200">
+                <div class="event-info">
+                    <h3><i>Arrëthyesi</i></h3>
+                    <p class="event-type">Ballet</p>
+                    <p><strong>23, 24, 26, 27, 29, 30 December 2024</strong><b>Time:</b>19:00</p>
+                    <p>Baleti emblematik i Krishtlindjes, me muzikën e pa përsëritshme të Tchaikovsky-t që sjell festën, magjinë, atmosferën e ngrohtë në dhjetorin e ftohtë, si dhe përrallën me fund të lumtur, vjen në Teatrin Kombëtar të Operës dhe Baletit.</p>
+                    <button onclick="window.location.href='tickets.html'">BOOK</button>
+                </div>
+            </div>
+    
+            <!-- Event Card 2: Lucia di Lammermoor -->
+            <div class="event-card">
+                <img src="lucia.jpg" alt="Lucia di Lammermoor" height="200" width="200">
+                <div class="event-info">
+                    <h3><i>Lucia di Lammermoor</i></h3>
+                    <p class="event-type">Opera</p>
+                    <p><strong>12, 13, 15, 16 December 2024</strong><b>Time:</b> 19:00</p>
+                    <p>Dashuri, vrasje, çmenduri dhe një fustan i gjakosur – për më shumë se 200 vjet, historia tronditëse e ka bërë audiencën të dridhet nga emocionet!</p>
+                    <button onclick="window.location.href='tickets.html'">BOOK</button>
+                </div>
+            </div>
+    
+            <!-- Event Card 3: Oshëtima e Maleve -->
+            <div class="event-card">
+                <img src="osh.jpg" alt="Oshëtima e Maleve" height="200" width="200">
+                <div class="event-info">
+                    <h3><i>Oshëtima e Maleve</i></h3>
+                    <p class="event-type">Concert</p>
+                    <p><strong>28 November 2024</strong><b>Time:</b> 19:00</p>
+                    <p>Ansambli Kombëtar i Këngëve dhe Valleve Popullore sjell një koncert unik për të gjithë artdashësit, për të festuar me krenari 112-vjetorin e Pavarsisë së Shqipërisë!</p>
+                    <button onclick="window.location.href='tickets.html'">BOOK</button>
+                </div>
+            </div>
+    
+            <!-- Event Card 4: Nëntori i Yjeve të Artë -->
+            <div class="event-card">
+                <img src="nentor.jpg" alt="Nëntori i Yjeve të Artë" height="200" width="200">
+                <div class="event-info">
+                    <h3><i>Nëntori i Yjeve të Artë</i></h3>
+                    <p class="event-type">Concert</p>
+                    <p><strong>27 November 2024</strong><b>Time:</b> 19:00</p>
+                    <p>“Nëntori i Yjeve të Artë” është një homazh muzikor për heroizmin dhe sakrificat e shqiptarëve gjatë Luftës Nacional-Çlirimtare.</p>
+                    <button onclick="window.location.href='tickets.html'">BOOK</button>
+                </div>
+            </div>
+    
+            <!-- Event Card 5: Goca e Kaçanikut -->
+            <div class="event-card">
+                <img src="goca.jpg" alt="Goca e Kaçanikut" height="200" width="200">
+                <div class="event-info">
+                    <h3><i>Goca e Kaçanikut</i></h3>
+                    <p class="event-type">Opera</p>
+                    <p><strong>25 November 2024</strong><b>Time:</b> 19:00</p>
+                    <p>Një histori dashurie, trimërie dhe lirie, e bazuar në novelën e Milto Sotir Guros e sjellë në jetë me regjinë e regjisorit Nikolin Gurakuqi.</p>
+                    <button onclick="window.location.href='tickets.html'">BOOK</button>
+                </div>
+            </div>
+    
+            <!-- Event Card 6: Tosca -->
+            <div class="event-card">
+                <img src="tosca.jpg" alt="Tosca" height="200" width="200">
+                <div class="event-info">
+                    <h3><i>Tosca</i></h3>
+                    <p class="event-type">Opera</p>
+                    <p><strong>9 November 2024</strong><b>Time:</b> 12:00 </p>
+                    <p>Një përshtatje e mrekullueshme e operës klasike nga Giacomo Puccini, sjellë në një version të lehtë dhe argëtues për të gjithë artdashësit e vegjël.</p>
+                    <button onclick="window.location.href='tickets.html'">BOOK</button>
+                </div>
+            </div>
+    
+            <!-- Event Card 7: Romantikët në Opera -->
+            <div class="event-card">
+                <img src="op.jpg" alt="Romantikët në Opera" height="200" width="200">
+                <div class="event-info">
+                    <h3><i>Romantikët në Opera</i></h3>
+                    <p class="event-type">Concert</p>
+                    <p><strong>27 September 2024</strong><b>Time:</b> 20:00</p>
+                    <p>Një udhëtim magjik, i cili na shpie në fillim të shekullit XIX e deri në mes të tij, në periudhën e romantizmit, gjatë së cilës filluan të dilnin në skenë veprat e Schumann-it dhe Mendelssohn-it!</p>
+                    <button onclick="window.location.href='tickets.html'">BOOK</button>
+                </div>
+            </div>
+    
+            <!-- Event Card 8: Liqeni i Mjellmave -->
+            <div class="event-card">
+                <img src="liqeni.jpg" alt="Liqeni i Mjellmave" height="200" width="200">
+                <div class="event-info">
+                    <h3><i>Liqeni i Mjellmave</i></h3>
+                    <p class="event-type">Ballet</p>
+                    <p><strong>15 October 2024</strong><b>Time:</b> 20:00</p>
+                    <p>Një ngjarje e paharruar, tërësisht mbushur me emocion, me një koreografi magjike dhe skena të mrekullueshme të ngjashme me pasazhet natyrore.</p>
+                    <button onclick="window.location.href='tickets.html'">BOOK</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <footer>
+        <div class="footer1">
+            <img src="tkob.png" alt="TKOB Logo">
+            <p id="label">
+                You can also find us on:
+            </p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fteatri_i_operes_dhe_baletit%2F%3Fhl%3Den&is_from_rle" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-instagram">
+                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"></path>
+                    </svg>
+                    @teatri_i_operas_dhe_baletit
+                </a>
+                <a href="https://www.facebook.com/tkob.gov.al/?ref=embed_page" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-facebook">
+                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"></path>
+                    </svg>
+                    Teatri Kombetar i Operas, Baletit dhe Ansamblit Popullor
+                </a>
+            </div>
+            <p id="para1">&copy; 2024 Opera and Ballet Albanian Theatre. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
