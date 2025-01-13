@@ -336,6 +336,23 @@
             transform: scale(1.05);
         }
 
+        @media (max-width: 768px) {
+            #aboutus h1 {
+                font-size: 6vw;
+            }
+            #aboutus p {
+                font-size: 1rem;
+            }
+          
+            .event-box h3 {
+                font-size: 1rem; 
+                bottom: 10%;
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+            }
+        }
+
 
     </style>
     <script>
@@ -362,7 +379,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="home.html">
                     <img src="teatrioperas.png" alt="Opera Logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -448,12 +465,10 @@
         <div class="event-box" onclick="window.location.href='eventsn.html'">
             <img src="nat.jpg" alt="National Events">
             <h3>National Events</h3>
-            <h5><i>National Events held in Tirana</i></h5>
         </div>
         <div class="event-box" onclick="window.location.href='eventsi.html'">
             <img src="in.jpg" height="50%" alt="International Events">
             <h3>International Events</h3>
-            <h5><i>National Events held in different countries by our troupe such as: Spain, France, Germany etc.</i></h5>
         </div>
     </section>
 
